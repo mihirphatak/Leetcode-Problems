@@ -1,0 +1,13 @@
+var twoSum = function(nums, target) {
+    let map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        let remaining = target - nums[i];
+        if (map.has(remaining) && map.get(remaining) != i) {
+            return [i, map.get(remaining)];
+        }
+        map.set(nums[i], i)
+    }
+};
+
+// This is done in JS.
+// URL for problem - https://leetcode.com/problems/two-sum/
