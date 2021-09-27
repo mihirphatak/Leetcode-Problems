@@ -1,0 +1,16 @@
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        HashSet<String> emailSet = new HashSet<>();
+        for(String email: emails) {
+            String local = email.split("@")[0].replace(".", "");
+            String domain = email.split("@")[1];
+            if(local.contains("+")) {
+                local = local.split("\\+")[0];
+            }
+            emailSet.add(local + "@" +domain);
+        }
+        return emailSet.size();
+    }
+}
+
+// URL for problem - https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/639/week-4-september-22nd-september-28th/3989/
