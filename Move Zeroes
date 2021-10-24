@@ -1,0 +1,18 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int lastNonZeroCursor = 0, zeroCursor = 0, tmp;
+        while(zeroCursor < nums.length) {
+            if(nums[zeroCursor] != 0){
+                if(nums[lastNonZeroCursor] == 0){
+                    nums[lastNonZeroCursor] = nums[lastNonZeroCursor] + nums[zeroCursor];
+                    nums[zeroCursor] = nums[lastNonZeroCursor] - nums[zeroCursor];
+                    nums[lastNonZeroCursor] = nums[lastNonZeroCursor] - nums[zeroCursor];
+                }
+                lastNonZeroCursor++;
+            }
+            zeroCursor++;
+        }
+    }
+}
+
+// URL - https://leetcode.com/problems/move-zeroes/
