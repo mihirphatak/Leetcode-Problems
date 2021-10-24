@@ -1,0 +1,20 @@
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int[] result = new int[nums.length];
+        int small = 0;
+        int big = nums.length - 1;
+        for(int i=nums.length-1; i>=0; i--) {
+            if(Math.abs(nums[small]) > Math.abs(nums[big])) {
+                result[i] = nums[small] * nums[small];
+                small++;
+            }
+            else {
+                result[i] = nums[big] * nums[big];
+                big--;
+            }
+        }
+        return result;
+    }
+}
+
+// URL - https://leetcode.com/problems/squares-of-a-sorted-array/
