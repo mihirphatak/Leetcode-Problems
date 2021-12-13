@@ -1,0 +1,16 @@
+class Solution {
+    public int maxPower(String s) {
+        int maxCnt = 1, cnt = 1;
+        for(int i=1; i<s.length(); i++) {
+            if(s.charAt(i) == s.charAt(i-1)) {
+                cnt++;
+                maxCnt = (maxCnt < cnt) ? cnt : maxCnt;
+            }
+            else
+                cnt = 1;
+        }
+        return maxCnt;
+    }
+}
+
+// URL - https://leetcode.com/problems/consecutive-characters/
