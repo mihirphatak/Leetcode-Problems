@@ -1,0 +1,22 @@
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        String[] words = s.split(" ");
+        HashMap<Character, String> dict = new HashMap<Character, String>();
+        if(words.length!= pattern.length())
+            return false;
+        for(int i=0; i<words.length; i++){
+            char c = pattern.charAt(i);
+            if(dict.containsKey(c)){
+                if(!dict.get(c).equals(words[i]))
+                    return false;
+            }else{
+                if(dict.containsValue(words[i]))
+                    return false;
+                dict.put(c, words[i]);
+            }    
+        }
+        return true;
+    }
+}
+
+//URL - https://leetcode.com/problems/word-pattern/
