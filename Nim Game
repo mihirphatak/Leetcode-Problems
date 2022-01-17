@@ -1,0 +1,11 @@
+class Solution {
+    public boolean canWinNim(int n) {
+        // If n comes in multiple of 4, your friend will definitely win.
+        if(n % 4 == 0) 
+            return false;
+        else
+            return true;
+    }
+}
+
+//URL - https://leetcode.com/problems/nim-game/
