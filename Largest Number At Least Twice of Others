@@ -1,0 +1,29 @@
+class Solution {
+    public int dominantIndex(int[] nums) {
+        int max = -1;
+        int index = 0;
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] > max) {
+                max = nums[i];
+                index = i;
+            }
+        }
+        int count = 0;
+        for(int num: nums) {
+            if(num == max) {
+                continue;
+            }
+            else if((num * 2) <= max) {
+                count++;
+            }
+        }
+        if(count == (nums.length - 1)) {
+            return index;
+        }
+        else {
+            return -1;
+        }
+    }
+}
+
+// URL - https://leetcode.com/problems/largest-number-at-least-twice-of-others/
