@@ -1,0 +1,19 @@
+class Solution {
+    public int minCost(String colors, int[] neededTime) {
+        int minCost = 0;
+        for(int i=1; i<neededTime.length; i++) {
+            if(colors.charAt(i)==colors.charAt(i-1)) {
+                if(neededTime[i]>neededTime[i-1]) {
+                    minCost += neededTime[i-1];
+                }
+                else {
+                    minCost += neededTime[i];
+                    neededTime[i] = neededTime[i-1];
+                }
+            }
+        }
+        return minCost;
+    }
+}
+
+// URL - https://leetcode.com/problems/minimum-time-to-make-rope-colorful/description/
