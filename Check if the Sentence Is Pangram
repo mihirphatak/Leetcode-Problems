@@ -1,0 +1,18 @@
+class Solution {
+    public boolean checkIfPangram(String sentence) {
+        HashSet<Character> set = new HashSet();
+        for(char c: sentence.toCharArray()) {
+            if(!set.contains(c)) {
+                set.add(c);
+            }
+        }
+        if(set.size() == 26) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
+// URL - https://leetcode.com/problems/check-if-the-sentence-is-pangram/description/
