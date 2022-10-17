@@ -1,0 +1,61 @@
+// Using HashMap
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character, Integer> magazineMap = new HashMap<>();
+        for(char c: magazine.toCharArray()) {
+            if(magazineMap.containsKey(c)) {
+                magazineMap.put(c, magazineMap.get(c) + 1);
+            }
+            else {
+                magazineMap.put(c, 1);
+            }
+        }
+        for(char c: ransomNote.toCharArray()) {
+            if(!magazineMap.containsKey(c) || magazineMap.get(c) == 0)  {
+                return false;
+            }
+            else {
+                 magazineMap.put(c, magazineMap.get(c) - 1);
+            }
+        }
+        return true;
+    }
+}
+
+// Using Arrays
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        // HashMap<Character, Integer> magazineMap = new HashMap<>();
+        // for(char c: magazine.toCharArray()) {
+        //     if(magazineMap.containsKey(c)) {
+        //         magazineMap.put(c, magazineMap.get(c) + 1);
+        //     }
+        //     else {
+        //         magazineMap.put(c, 1);
+        //     }
+        // }
+        // for(char c: ransomNote.toCharArray()) {
+        //     if(!magazineMap.containsKey(c) || magazineMap.get(c) == 0)  {
+        //         return false;
+        //     }
+        //     else {
+        //          magazineMap.put(c, magazineMap.get(c) - 1);
+        //     }
+        // }
+        // return true;
+        int magazineCount[] = new int[26];
+        for(char c: magazine.toCharArray()) {
+            magazineCount[c - 'a']++;
+        }
+        for (char c: ransomNote.toCharArray()) {
+            if(magazineCount[c - 'a'] == 0) {
+                return false;
+            } else {
+                magazineCount[c - 'a']--;
+            }
+        }
+        return true;
+    }
+}
+
+// URL - https://leetcode.com/problems/ransom-note/description/
